@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Quitanda MVC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Sistema de Gestão de Quitanda</h1>
+
+    <section id="cadastro">
+        <h2>Cadastrar Produto</h2>
+        <input type="text" id="nome" placeholder="Nome">
+        <input type="text" id="categoria" placeholder="Categoria">
+        <input type="number" id="preco" placeholder="Preço">
+        <input type="number" id="quant" placeholder="Quantidade">
+        <button id="btnCadastrar">Cadastrar</button>
+    </section>
+
+    <section id="estoque">
+        <h2>Estoque Atual</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Qtd</th>
+                </tr>
+            </thead>
+            <tbody id="tabelaEstoque">
+                </tbody>
+        </table>
+    </section>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
