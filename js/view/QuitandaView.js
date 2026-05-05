@@ -1,52 +1,79 @@
+// js/view/QuitandaView.js
+
 export class QuitandaView {
-    constructor() {
-        this.tabela = document.getElementById('tabelaEstoque');
-        this.elementoMensagem = document.getElementById('mensagemQuitanda');
-    }
+  constructor() {
+    this.tabelaCorpo = document.getElementById("corpo-tabela");
+    this.corpoHistorico = document.getElementById("corpo-historico"); // Novo
+    this.formProduto = document.getElementById("form-produto");
+  }
 
-    renderEstoque(produtos, vender) {
-        
-        this.tabela.innerHTML = "";
+  renderizarProdutos(produtos) {
+    this.tabelaCorpo.innerHTML = "";
 
-        
-        produtos.forEach(p => {
-            
-            const linha = document.createElement("tr");
+    produtos.forEach((produto) => {
+      const classeEstoque = produto.quantidade < 5 ? "estoque-baixo" : "";
 
-            
-            const tdId = document.createElement("td");
-            tdId.textContent = p.id;
+      const linha = document.createElement("tr");
+      linha.innerHTML = `
+                <td>${produto.nome}</td>
+                <td>R$ ${produto.preco.toFixed(2)}</td>
+                <td><span class="${classeEstoque}">${produto.quantidade}</span></td>
+                <td>
+                    <div class="acoes-venda">
+                        <input type="number" min="1" max="${produto.quantidade}" value="1" class="input-qtd-venda" id="qtd-${produto.id}">
+                        <button class="btn-venda" data-id="${produto.id}">Vender</button>
+                    </div>
+                </td>
+            `;
+      this.tabelaCorpo.appendChild(linha);
+    });
+  }
 
-            const tdNome = document.createElement("td");
-            tdNome.textContent = p.nome;
+  // NOVA FUNÇÃO: Desenha a tabela de histórico
+  renderizarHistorico(historico) {
+    this.corpoHistorico.innerHTML = "";
 
-            const tdPreco = document.createElement("td");
-            tdPreco.textContent = `R$ ${p.preco}`;
+    historico.forEach((item) => {
+      const classeTipo =
+        item.tipo === "Entrada" ? "badge-entrada" : "badge-saida";
 
-            const tdQtd = document.createElement("td");
-            tdQtd.textContent = p.quantidade;
+      const linha = document.createElement("tr");
+      linha.innerHTML = `
+                <td>${item.dataHora}</td>
+                <td><span class="${classeTipo}">${item.tipo}</span></td>
+                <td>${item.produtoNome}</td>
+                <td>${item.quantidade} un.</td>
+            `;
+      this.corpoHistorico.appendChild(linha);
+    });
+  }
 
-          
-            const tdAcoes = document.createElement("td");
-            const btnVender = document.createElement("button");
-            btnVender.textContent = "Vender";
-            
-        
-            btnVender.addEventListener("click", () => vender(p, 1)); 
+  bindAdicionarProduto(handler) {
+    this.formProduto.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const nome = document.getElementById("nome").value;
+      const preco = document.getElementById("preco").value;
+      const quantidade = document.getElementById("quantidade").value;
 
-            tdAcoes.appendChild(btnVender);
+      handler(nome, preco, quantidade);
+      this.formProduto.reset();
+    });
+  }
 
-            //linhas dentro da tabela
-            linha.appendChild(tdId);
-            linha.appendChild(tdNome);
-            linha.appendChild(tdPreco);
-            linha.appendChild(tdQtd);
-            linha.appendChild(tdAcoes);
+  bindVenderProduto(handler) {
+    this.tabelaCorpo.addEventListener("click", (event) => {
+      if (event.target.classList.contains("btn-venda")) {
+        const id = parseInt(event.target.getAttribute("data-id"));
+        // Captura a quantidade que o utilizador escolheu no input
+        const inputQtd = document.getElementById(`qtd-${id}`);
+        const qtdVenda = parseInt(inputQtd.value, 10);
 
-            this.tabela.appendChild(linha);
-        });
-    }
-    renderVenda(texto) {
-        this.elementoMensagem.textContent = texto;
-    }
+        handler(id, qtdVenda);
+      }
+    });
+  }
+
+  mostrarMensagem(mensagem) {
+    alert(mensagem);
+  }
 }

@@ -1,0 +1,244 @@
+/* =========================================
+   VARIÁVEIS DE CORES E FONTES (Tema Rosa)
+   ========================================= */
+:root {
+    --cor-primaria: #d686ae;
+    --cor-btn: #74b978;
+    /* Rosa vibrante */
+    --cor-primaria-hover: #db2777;
+    /* Rosa escuro para hover */
+    --cor-fundo: #fdf2f8;
+    /* Fundo rosa bem clarinho */
+    --cor-texto: #4a5568;
+    --cor-texto-claro: #718096;
+    --cor-borda: #e2e8f0;
+    --cor-branco: #ffffff;
+    --cor-perigo: #e53e3e;
+    --cor-perigo-fundo: #fed7d7;
+    --cor-sucesso-fundo: #c6f6d5;
+    --cor-sucesso-texto: #22543d;
+}
+
+/* =========================================
+   RESET BÁSICO
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+/* =========================================
+   CABEÇALHO
+   ========================================= */
+.cabecalho {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    padding: 2rem 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.cabecalho h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+/* =========================================
+   LAYOUT PRINCIPAL (GRID)
+   ========================================= */
+.container {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+/* Faz o painel de histórico ocupar a largura toda (as duas colunas) */
+.historico-painel {
+    grid-column: 1 / -1;
+}
+
+/* =========================================
+   PAINÉIS (CARDS) E FORMULÁRIOS
+   ========================================= */
+.painel {
+    background-color: var(--cor-branco);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.painel h2 {
+    font-size: 1.5rem;
+    color: var(--cor-texto);
+    margin-bottom: 0.2rem;
+}
+
+.subtitulo {
+    color: var(--cor-texto-claro);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.grupo-input {
+    margin-bottom: 1.2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.linha-inputs {
+    display: flex;
+    gap: 1rem;
+}
+
+.linha-inputs .grupo-input {
+    flex: 1;
+}
+
+label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+    color: var(--cor-texto);
+}
+
+input {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.2);
+}
+
+/* =========================================
+   BOTÕES
+   ========================================= */
+.btn-principal {
+    width: 100%;
+    background-color: var(--cor-btn);
+    color: var(--cor-branco);
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 1rem;
+}
+
+.btn-principal:hover {
+    background-color: var(--cor-primaria-hover);
+}
+
+.btn-venda {
+    background-color: var(--cor-branco);
+    color: var(--cor-primaria);
+    border: 1px solid var(--cor-primaria);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-venda:hover {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+}
+
+/* Ações na Tabela de Venda (Input + Botão) */
+.acoes-venda {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.input-qtd-venda {
+    width: 70px;
+    padding: 0.4rem;
+}
+
+/* =========================================
+   TABELAS E BADGES
+   ========================================= */
+.tabela-container {
+    overflow-x: auto;
+}
+
+.tabela-produtos {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.tabela-produtos th,
+.tabela-produtos td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+.tabela-produtos th {
+    background-color: #f8fafc;
+    font-weight: 600;
+    color: var(--cor-texto-claro);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.estoque-baixo {
+    color: var(--cor-perigo);
+    font-weight: bold;
+    background-color: var(--cor-perigo-fundo);
+    border-radius: 4px;
+    padding: 0.2rem 0.5rem;
+}
+
+.badge-entrada {
+    background-color: var(--cor-sucesso-fundo);
+    color: var(--cor-sucesso-texto);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.badge-saida {
+    background-color: var(--cor-perigo-fundo);
+    color: var(--cor-perigo);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .historico-painel {
+        grid-column: 1;
+    }
+}
