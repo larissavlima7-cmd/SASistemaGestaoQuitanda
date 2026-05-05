@@ -7,6 +7,7 @@ export class QuitandaView {
     this.formProduto = document.getElementById("form-produto");
   }
 
+  // aqui é o método para renderizar a lista de produtos. Ele percorre a lista de produtos e cria uma linha na tabela para cada um, exibindo o nome, preço, quantidade e um botão para vender. Se a quantidade do produto for menor que 5, ele adiciona uma classe CSS para destacar o estoque baixo.
   renderizarProdutos(produtos) {
     this.tabelaCorpo.innerHTML = "";
 
@@ -29,7 +30,7 @@ export class QuitandaView {
     });
   }
 
-  // NOVA FUNÇÃO: Desenha a tabela de histórico
+  //essa função é para renderizar o histórico de vendas. Ela percorre a lista de transações e cria uma linha na tabela para cada uma, exibindo a data/hora, tipo (entrada ou saída), nome do produto e quantidade. O tipo é destacado com uma classe CSS diferente para facilitar a visualização.
   renderizarHistorico(historico) {
     this.corpoHistorico.innerHTML = "";
 
@@ -37,6 +38,7 @@ export class QuitandaView {
       const classeTipo =
         item.tipo === "Entrada" ? "badge-entrada" : "badge-saida";
 
+      // aqui é para criar a linha da tabela para cada transação no histórico, usando as informações de data/hora, tipo, nome do produto e quantidade. O tipo é destacado com uma classe CSS diferente para facilitar a visualização.
       const linha = document.createElement("tr");
       linha.innerHTML = `
                 <td>${item.dataHora}</td>
@@ -48,6 +50,7 @@ export class QuitandaView {
     });
   }
 
+  // essa parte é o método que liga os eventos da interface com os manipuladores definidos no controlador. Ele adiciona um listener para o formulário de adição de produtos, capturando os dados inseridos pelo usuário e chamando o manipulador correspondente no controlador. Também adiciona um listener para os botões de venda na tabela de produtos, capturando o ID do produto e a quantidade a ser vendida, e chamando o manipulador correspondente no controlador.
   bindAdicionarProduto(handler) {
     this.formProduto.addEventListener("submit", (event) => {
       event.preventDefault();
@@ -60,6 +63,7 @@ export class QuitandaView {
     });
   }
 
+  // essa parte é para a gente capturar o evento de clique no botão de venda, obter o ID do produto e a quantidade a ser vendida, e chamar o manipulador correspondente no controlador. Ele verifica se o elemento clicado é um botão de venda, captura o ID do produto a partir do atributo data-id do botão, e captura a quantidade a partir do input associado ao produto. Em seguida, chama o manipulador passando o ID e a quantidade para processar a venda.
   bindVenderProduto(handler) {
     this.tabelaCorpo.addEventListener("click", (event) => {
       if (event.target.classList.contains("btn-venda")) {
@@ -68,7 +72,7 @@ export class QuitandaView {
         const inputQtd = document.getElementById(`qtd-${id}`);
         const qtdVenda = parseInt(inputQtd.value, 10);
 
-        handler(id, qtdVenda);
+        handler(id, qtdVenda); // o handler serve para chamar o método do controlador que processa a venda, passando o ID do produto e a quantidade a ser vendida.
       }
     });
   }

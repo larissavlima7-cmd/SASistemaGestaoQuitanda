@@ -1,14 +1,9 @@
-/* =========================================
-   VARIÁVEIS DE CORES E FONTES (Tema Rosa)
-   ========================================= */
+/*essa parte é para definir variáveis de cor e fonte */
 :root {
     --cor-primaria: #d686ae;
     --cor-btn: #74b978;
-    /* Rosa vibrante */
     --cor-primaria-hover: #db2777;
-    /* Rosa escuro para hover */
-    --cor-fundo: #fdf2f8;
-    /* Fundo rosa bem clarinho */
+    --cor-fundo: #f3e5e9;
     --cor-texto: #4a5568;
     --cor-texto-claro: #718096;
     --cor-borda: #e2e8f0;
@@ -19,9 +14,7 @@
     --cor-sucesso-texto: #22543d;
 }
 
-/* =========================================
-   RESET BÁSICO
-   ========================================= */
+/* aqui nós vamos definir estilos básicos para todos os elementos */
 * {
     margin: 0;
     padding: 0;
@@ -29,32 +22,35 @@
 }
 
 body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
     font-family: 'Inter', sans-serif;
     background-color: var(--cor-fundo);
     color: var(--cor-texto);
     line-height: 1.6;
 }
 
-/* =========================================
-   CABEÇALHO
-   ========================================= */
+/*essa parte serve para definir o estilo do cabeçalho, a parte de cima do site */
 .cabecalho {
     background-color: var(--cor-primaria);
     color: var(--cor-branco);
     padding: 2rem 1rem;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     text-align: center;
+    width: 100%;
+    display: block;
 }
 
+/*aqui é para definir o estilo do título do cabeçalho */
 .cabecalho h1 {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
 }
 
-/* =========================================
-   LAYOUT PRINCIPAL (GRID)
-   ========================================= */
+/*essa parte nos fizemos para definir o layout principal */
 .container {
     max-width: 1100px;
     margin: 2rem auto;
@@ -65,14 +61,12 @@ body {
     align-items: start;
 }
 
-/* Faz o painel de histórico ocupar a largura toda (as duas colunas) */
+/* isso aqui faz o painel de histórico ocupar a largura toda (as duas colunas) */
 .historico-painel {
     grid-column: 1 / -1;
 }
 
-/* =========================================
-   PAINÉIS (CARDS) E FORMULÁRIOS
-   ========================================= */
+/* esses aqui serve para definir o estilo dos painéis (cards) */
 .painel {
     background-color: var(--cor-branco);
     border-radius: 12px;
@@ -80,33 +74,38 @@ body {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
+/* aqui é para definir o estilo dos títulos dentro dos painéis */
 .painel h2 {
     font-size: 1.5rem;
     color: var(--cor-texto);
     margin-bottom: 0.2rem;
 }
 
+/*essa parte é para definir o estilo dos subtítulos */
 .subtitulo {
     color: var(--cor-texto-claro);
     font-size: 0.9rem;
     margin-bottom: 1.5rem;
 }
 
+/*esse é para definir o estilo dos grupos de inputs */
 .grupo-input {
     margin-bottom: 1.2rem;
     display: flex;
     flex-direction: column;
 }
 
+/*esse aqui é para definir o estilo das linhas de inputs */
 .linha-inputs {
     display: flex;
     gap: 1rem;
 }
-
+/*aqui é para definir o estilo das linhas de inputs */
 .linha-inputs .grupo-input {
     flex: 1;
 }
 
+/*aqui é para definir o estilo das labels */
 label {
     font-weight: 600;
     font-size: 0.9rem;
@@ -114,6 +113,7 @@ label {
     color: var(--cor-texto);
 }
 
+/*aqui é para definir o estilo dos inputs */
 input {
     padding: 0.75rem 1rem;
     border: 1px solid var(--cor-borda);
@@ -123,15 +123,14 @@ input {
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 
+/* aqui é para definir o estilo dos inputs quando estão em foco */
 input:focus {
     outline: none;
     border-color: var(--cor-primaria);
     box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.2);
 }
 
-/* =========================================
-   BOTÕES
-   ========================================= */
+/*essa parte é para definir o estilo dos botões principais*/
 .btn-principal {
     width: 100%;
     background-color: var(--cor-btn);
@@ -146,10 +145,12 @@ input:focus {
     margin-top: 1rem;
 }
 
+/*aqui é para definir o estilo dos botões principais quando estão em hover */
 .btn-principal:hover {
     background-color: var(--cor-primaria-hover);
 }
 
+/*esse é para definir o estilo dos botões de venda */
 .btn-venda {
     background-color: var(--cor-branco);
     color: var(--cor-primaria);
@@ -161,36 +162,38 @@ input:focus {
     transition: all 0.2s;
 }
 
+/*esse aqui é para definir o estilo dos botões de venda quando estão em hover */
 .btn-venda:hover {
     background-color: var(--cor-primaria);
     color: var(--cor-branco);
 }
 
-/* Ações na Tabela de Venda (Input + Botão) */
+/* essas são para definir o estilo das ações de venda */
 .acoes-venda {
     display: flex;
     gap: 0.5rem;
     align-items: center;
 }
 
+/*essa parte é para definir o estilo do input de quantidade de venda */
 .input-qtd-venda {
     width: 70px;
     padding: 0.4rem;
 }
 
-/* =========================================
-   TABELAS E BADGES
-   ========================================= */
+/* aqui nós definimos o estilo do contêiner da tabela */
 .tabela-container {
     overflow-x: auto;
 }
 
+/*aqui é para definir o estilo da tabela de produtos */
 .tabela-produtos {
     width: 100%;
     border-collapse: collapse;
     margin-top: 1rem;
 }
 
+/*esse é para definir o estilo das células da tabela */
 .tabela-produtos th,
 .tabela-produtos td {
     padding: 1rem;
@@ -198,6 +201,7 @@ input:focus {
     border-bottom: 1px solid var(--cor-borda);
 }
 
+/*aqui serve para definir o estilo das células do cabeçalho da tabela */
 .tabela-produtos th {
     background-color: #f8fafc;
     font-weight: 600;
@@ -206,6 +210,7 @@ input:focus {
     font-size: 0.8rem;
 }
 
+/*essa parte é para definir o estilo dos itens com estoque baixo */
 .estoque-baixo {
     color: var(--cor-perigo);
     font-weight: bold;
@@ -214,6 +219,7 @@ input:focus {
     padding: 0.2rem 0.5rem;
 }
 
+/*aqui nós definimos o estilo dos badges de entrada */
 .badge-entrada {
     background-color: var(--cor-sucesso-fundo);
     color: var(--cor-sucesso-texto);
@@ -223,6 +229,7 @@ input:focus {
     font-weight: bold;
 }
 
+/* aqui nós definimos o estilo dos badges de saída */
 .badge-saida {
     background-color: var(--cor-perigo-fundo);
     color: var(--cor-perigo);
@@ -232,7 +239,7 @@ input:focus {
     font-weight: bold;
 }
 
-/* Responsividade */
+/* responsividade */
 @media (max-width: 768px) {
     .container {
         grid-template-columns: 1fr;

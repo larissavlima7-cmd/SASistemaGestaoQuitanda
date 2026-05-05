@@ -10,6 +10,7 @@
 <body>
     <header class="cabecalho">
         <div class="cabecalho-conteudo">
+            <!-- Titulo do sistema -->
             <h1>🍓 Quitanda Digital</h1>
             <p>Sistema de Gestão de Inventário e Vendas</p>
         </div>
@@ -19,31 +20,40 @@
         <aside class="painel form-painel">
             <h2>Cadastrar Produto</h2>
             <p class="subtitulo">Adicione novos itens ao estoque</p>
+            <!-- Formulario para cadastrar os produtos da quitanda -->
             <form id="form-produto">
                 <div class="grupo-input">
+
                     <label for="nome">Nome do Produto</label>
+                    <!-- campo para preencher -->
                     <input type="text" id="nome" placeholder="Ex: Morango" required autocomplete="off">
                 </div>
                 <div class="linha-inputs">
                     <div class="grupo-input">
+                        <!-- campo para colocar preço nos produtos -->
                         <label for="preco">Preço Unit. (R$)</label>
                         <input type="number" id="preco" step="0.01" min="0.01" placeholder="0,00" required>
                     </div>
                     <div class="grupo-input">
+                        <!-- campo para colocar a quantidade que vai ter no estoque-->
                         <label for="quantidade">Qtd. Inicial</label>
                         <input type="number" id="quantidade" min="1" placeholder="0" required>
                     </div>
                 </div>
+                <!-- Botão para adicionar os produtos para estoque -->
                 <button type="submit" class="btn-principal">Adicionar ao Estoque</button>
             </form>
         </aside>
 
         <section class="painel tabela-painel">
+            <!-- Informações que se tem no estoque-->
             <h2>Inventário Atual</h2>
             <p class="subtitulo">Controle os seus produtos e realize vendas</p>
             <div class="tabela-container">
+                <!-- Tabela com os dados dos produtos do estoque -->
                 <table class="tabela-produtos">
                     <thead>
+                        <!-- Criando a linha com os titulos -->
                         <tr>
                             <th>Produto</th>
                             <th>Preço</th>
@@ -51,15 +61,17 @@
                             <th>Ação</th>
                         </tr>
                     </thead>
+                    <!-- Pega as informações do View e coloca na tabela -->
                     <tbody id="corpo-tabela"></tbody>
                 </table>
             </div>
         </section>
-
+        <!-- Resumo das Alterações, com os produtos que sairam e os que entraram -->
         <section class="painel historico-painel">
             <h2>Histórico de Transações</h2>
             <p class="subtitulo">Registo de entradas e saídas de produtos</p>
             <div class="tabela-container">
+                <!-- Tabela para as informações de entrada e saída -->
                 <table class="tabela-produtos">
                     <thead>
                         <tr>
@@ -69,6 +81,7 @@
                             <th>Quantidade</th>
                         </tr>
                     </thead>
+                    <!-- Pega as informações do View e coloca na tabela -->
                     <tbody id="corpo-historico">
                         </tbody>
                 </table>

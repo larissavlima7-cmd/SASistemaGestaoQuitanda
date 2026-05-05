@@ -1,5 +1,4 @@
-// js/controller/QuitandaController.js
-
+// essa parte é o controlador, que liga o modelo e a visão. Ele recebe as ações do usuário, processa os dados usando o modelo e atualiza a visão.
 export class QuitandaController {
   constructor(model, view) {
     this.model = model;
@@ -11,6 +10,7 @@ export class QuitandaController {
     this.atualizarView();
   }
 
+  // essa parte é o método que lida com a adição de produtos. Ele verifica se os dados são válidos antes de chamar o modelo para adicionar o produto e atualizar a visão.
   handleAdicionarProduto(nome, preco, quantidade) {
     if (nome && preco > 0 && quantidade > 0) {
       this.model.adicionarProduto(nome, preco, quantidade);
@@ -22,7 +22,7 @@ export class QuitandaController {
     }
   }
 
-  // Agora recebe também a quantidade a ser vendida
+  // agora recebe também a quantidade a ser vendida
   handleVenderProduto(id, qtdVenda) {
     if (isNaN(qtdVenda) || qtdVenda <= 0) {
       this.view.mostrarMensagem(
@@ -31,8 +31,11 @@ export class QuitandaController {
       return;
     }
 
+    // aqui é para verificar se a venda é bem-sucedida, ou seja, se há estoque suficiente para a quantidade solicitada. O método venderProduto do modelo deve retornar um valor booleano indicando o sucesso da operação.
     const sucesso = this.model.venderProduto(id, qtdVenda);
 
+
+    // se a venda for bem-sucedida, atualiza a visão. Caso contrário, exibe uma mensagem de erro indicando que o estoque é insuficiente para a quantidade solicitada.
     if (sucesso) {
       this.atualizarView();
     } else {
@@ -40,7 +43,7 @@ export class QuitandaController {
     }
   }
 
-  // Atualiza as DUAS tabelas na ecrã
+  // essa parte é o método que atualiza a visão com os dados mais recentes do modelo. Ele obtém a lista de produtos e o histórico de vendas do modelo e chama os métodos da visão para renderizá-los.
   atualizarView() {
     const produtos = this.model.obterProdutos();
     const historico = this.model.obterHistorico();

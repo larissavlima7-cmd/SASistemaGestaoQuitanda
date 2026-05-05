@@ -1,5 +1,4 @@
-// js/model/Produto.js
-
+// classe produto, dando atributos ao produto
 export class Produto {
   // O construtor cria o objeto Produto com as suas características
   constructor(id, nome, preco, quantidade) {
